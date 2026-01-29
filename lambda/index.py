@@ -246,12 +246,12 @@ def send_notification(score: int, details: dict, sunset_time: str) -> dict:
 
     message = f"""
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🌅 真っ赤な空アラート
+ 真っ赤な空が見れるぞ！(多分)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📍 場所: {LOCATION_NAME}
-🕐 日の入り時刻: {sunset_time}
-📊 出現可能性スコア: {score}/100
+場所: {LOCATION_NAME}
+日の入り時刻: {sunset_time}
+出現可能性スコア: {score}/100
 
 【判定詳細】
 {reasons_text}
@@ -262,11 +262,6 @@ def send_notification(score: int, details: dict, sunset_time: str) -> dict:
 ・視程: {details.get('visibility', 0):,}m
 ・湿度: {details.get('humidity', 0)}%
 ・降水確率: {int(details.get('pop', 0) * 100)}%
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-※ 日の入り前後の西の空をご覧ください
-※ Honda Kids「魔法のような色の空はなぜ見えるか」参照
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 通知時刻: {now.strftime('%Y-%m-%d %H:%M:%S')} JST
 """
