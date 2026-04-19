@@ -55,8 +55,28 @@ class RedSkyAlertStack(Stack):
             self,
             "RedSkyCheckerFunction",
             runtime=lambda_.Runtime.PYTHON_3_12,
-            handler="index.handler",
-            code=lambda_.Code.from_asset(os.path.join(os.path.dirname(__file__), "..", "lambda")),
+            handler="lambda.handler.handler",
+            code=lambda_.Code.from_asset(
+                os.path.join(os.path.dirname(__file__), ".."),
+                exclude=[
+                    ".venv",
+                    ".git",
+                    "cdk.out",
+                    ".pytest_cache",
+                    "__pycache__",
+                    "*.pyc",
+                    ".DS_Store",
+                    "tests",
+                    "red_sky_alert",
+                    "*.md",
+                    "requirements.txt",
+                    "app.py",
+                    "cdk.json",
+                    "package.json",
+                    "source.bat",
+                    ".gitignore",
+                ]
+            ),
             timeout=Duration.seconds(30),
             memory_size=256,
             environment={
@@ -99,6 +119,7 @@ class RedSkyAlertStack(Stack):
             ),
             enabled=True,
         )
+        spring_autumn_rule.add_target(targets.LambdaFunction(red_sky_checker))
 
         # 夏用の時間設定
         summer_rule = events.Rule(
