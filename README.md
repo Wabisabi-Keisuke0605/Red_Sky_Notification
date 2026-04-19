@@ -17,6 +17,10 @@ Honda Kids「[魔法のような色の空はなぜ見えるか](https://www.hond
 
 ## アーキテクチャ
 
+<img width="1151" height="551" alt="スクリーンショット 2026-04-19 21 36 14" src="https://github.com/user-attachments/assets/d809797b-7ccb-47b5-87c8-3e4b18b2bbb6" />
+
+
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                    EventBridge                          │
